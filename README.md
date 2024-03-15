@@ -1,5 +1,7 @@
-References: 1) ChatGPT with initial help with XML formation.
-            2) https://mujoco.readthedocs.io/en/stable/python.html - python binding documentation for MuJoCo
+References: 
+1) ChatGPT with initial help with XML formation.
+
+2) https://mujoco.readthedocs.io/en/stable/python.html - python binding documentation for MuJoCo
 
 
 In this assignment, I look to apply an evolutionary algorithm to iteratively evolve a pre-selected geometry (inspired by a geodude - a floating mass with two muscular arms, that would aim to roll around and propel itself forward with its arms to learn motion) to potentially optimize the limitations of its geometry for a potentially more efficient mode of locomotion. 
