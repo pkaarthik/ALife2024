@@ -1,0 +1,31 @@
+<mujoco model="geodude">
+    <worldbody>
+	<light diffuse=".5 .5 .5" pos="0 0 3" dir="0 0 -1" />
+	<geom name="ground" type="plane" size="50 50 0.1" rgba=".9 .9 .9 1" />
+        <body name="geodude_body" pos = "0 0 0.5" >
+		<joint type = "free"/>
+		<body name="main_body" pos = "0 0 0">
+            	<geom type="sphere" size="0.15" rgba="1 0 0 1" pos="0 0 0" mass = "5"/>
+		</body>
+            	<body name="arm1" pos="-0.2 0 0">
+                	<geom type="capsule" size="0.05 0.02" rgba="0 1 0 1" mass = "0.01"/>
+                	<joint name = "arm1" axis="1 0 0" type="hinge" range="-60 60" />
+                	<body name="hand1" pos="-0.08 -0.05 0">
+                    	<geom type="sphere" size="0.03" rgba="0 0 1 1" mass = "1"/>
+                	</body>
+            	</body>
+            	<body name="arm2" pos="0.2 0 0">
+                	<geom type="capsule" size="0.05 0.02" rgba="0 1 0 1" mass = "0.01"/>
+                	<joint name = "arm2" axis="1 0 0" type="hinge" range="-60 60"/>
+                	<body name="hand2" pos="0.08 -0.05 0">
+                    	<geom type="sphere" size="0.03" rgba="0 0 1 1" mass = "1"/>
+                	</body>
+            	</body>
+        </body>
+    </worldbody>
+
+    <actuator>
+	<motor joint = "arm1" name = "arm1" gear = "0.5" ctrllimited="true" ctrlrange = "-60 60"/>
+	<motor joint = "arm2" name = "arm2" gear = "0.5" ctrllimited="true" ctrlrange = "-60 60"/>
+    </actuator>
+</mujoco>
