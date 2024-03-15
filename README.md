@@ -10,7 +10,7 @@ To that end, I choose to evolve only the sizes and masses of my respective geome
 
 The best performing specimen of a specific generation is selected as the seed for the next generation, and appropriate metrics are varied by +/- 20% (size and mass). Addition of multiple limbs was considered, but the relative difficulty of randomly introducing multiple limbs onto a spherical body over multiple generations without arbitrary pre-selection deemed this less practical to implement - future work could look to evolve the limbs themselves and potentially look at alternative joint types for locomotion.
 
-The evolutionary process further added a degree of variance wherein offspring would randomly not show any mutations from their parents - this is done in order to further add some variance into the generated population and potentially conduct a large number survey over 100s of generations.\
+The evolutionary process further added a degree of variance wherein offspring would randomly not show any mutations from their parents - this is done in order to further add some variance into the generated population and potentially conduct a large number survey over 100s of generations.
 
 **To run this program:**
 To run the code, download the following: geodude.xml and ALife.py. 
