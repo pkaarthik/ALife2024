@@ -32,3 +32,6 @@ Generation 0 will generate x random specimens as mentioned above, and then the e
 Observations:
 Over the course of the evolution, the specimen tends to evolve such that mass on one arm is minimized and mass on the other is maximized, allowing for potentially explosive but highly unstable and unpredictable motions. 
 This unstable motion doesn't look to be constantly iterable on for improved results - adding too much mass on one limb at the cost of mass on the other isThis is also observable in the fitness measures observed, where in the specimens do not tend to steadily increase in function
+
+
+3D Printed Robot - COMING SOON!
