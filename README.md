@@ -6,7 +6,7 @@ References:
 
 In this assignment, I look to apply an evolutionary algorithm to iteratively evolve a pre-selected geometry (inspired by a geodude - a floating mass with two muscular arms, that would aim to roll around and propel itself forward with its arms to learn motion) to potentially optimize the limitations of its geometry for a potentially more efficient mode of locomotion. 
 
-To that end, I choose to evolve only the sizes and masses of my respective geometries and don't add any additional limbs or appendages. Furthermore, the metric for best performing evolved version of a generation is determined entirely by the total distance the body traverses from the origin. This metric is largely unstable due to the randomized actuator motion, but given the instability of motion studied, it seems to be the most suitable metric for the time being.
+To that end, I choose to evolve only the sizes and masses of my respective geometries and don't add any additional limbs or appendages. Furthermore, the metric for best performing evolved version of a generation is determined entirely by the total displacements from the origin. This metric is largely unstable due to the randomized actuator motion, but given the instability of motion studied, it seems to be the most suitable metric for the time being. Furthermore, this metric is worse than distance for consistent motion optimization but is interesting in the pursuit of short but fast motions.
 
 The best performing specimen of a specific generation is selected as the seed for the next generation, and appropriate metrics are varied by +/- 20% (size and mass). Addition of multiple limbs was considered, but the relative difficulty of randomly introducing multiple limbs onto a spherical body over multiple generations without arbitrary pre-selection deemed this less practical to implement - future work could look to evolve the limbs themselves and potentially look at alternative joint types for locomotion.
 
@@ -18,7 +18,7 @@ Execute ALife.py
 
 **Alternatively**
 To run the code, download the following: geodude.xml and ALife.ipynb 
-Execute ALife.ipynb.
+Execute ALife.ipynb in its entirety.
 
 **Parameters to modify**
 The evolution function consists of 4 parameters:
@@ -28,3 +28,7 @@ The evolution function consists of 4 parameters:
 4) No. of iterations to simulate and evaluate each speciment
 
 Generation 0 will generate x random specimens as mentioned above, and then the evolutionary algorithm will select the best performing specimen and further evolve that in generation 1, and so on until the last generation.
+
+Observations:
+Over the course of the evolution, the specimen tends to evolve such that mass on one arm is minimized and mass on the other is maximized, allowing for potentially explosive but highly unstable and unpredictable motions. 
+This unstable motion doesn't look to be constantly iterable on for improved results - adding too much mass on one limb at the cost of mass on the other isThis is also observable in the fitness measures observed, where in the specimens do not tend to steadily increase in function
