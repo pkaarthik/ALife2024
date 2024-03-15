@@ -38,20 +38,18 @@ def evolution(xml, gen, bodies_per_gen, iterations_body):
     
     while i<gen:
         while j<bodies_per_gen:
-            fitness = mutate(xml,i,j, iterations_body)                    #Mutate the model, simulate and determine the fitness of the model
-            #fitness = fitness_for_model("new.xml")         
+            fitness = mutate(xml,i,j, iterations_body)                    #Mutate the model, simulate and determine the fitness of the model       
             xml_list.append("new.xml")
             if fitness > best_body_fitness:
                 best_body_fitness = fitness
                 best_body = j
-                #xml = "new.xml"
             j+=1
             
         if j==bodies_per_gen:
             print(best_body_fitness, best_body)
             best_gen_fitness.append(best_body_fitness)
             
-            if best_body_fitness > np.argmax(best_gen_fitness):
+            if best_body_fitness > np.argmax(best_gen_fitness):              #Compare to fitness value of prev generations to see what the best evolution seed is
                 xml = xml_list[best_body]
                 best_specimen.append(best_body)
             j=0
@@ -81,16 +79,16 @@ def mutate(best_xml_file,i,j, iterations_body):
         
         ###Modify main body size and mass and arm size and mass
         body_geom = root.find(".//body[@name='geodude_body']/body/geom")
-        #body_geom.set('mass', str(float(body_geom.get('mass'))*random.uniform(0.8,1.2))) #body mass change
-        body_geom.set('size', str(float(body_geom.get('size'))*random.uniform(0.8,1.2))) #body size change
+        body_geom.set('mass', str(float(body_geom.get('mass'))*random.uniform(0.85,1.15))) #body mass change
+        #body_geom.set('size', str(float(body_geom.get('size'))*random.uniform(0.85,1.15))) #body size change
         
         arm_geom = root.find(".//body[@name='arm1']/body/geom")
-        arm_geom.set('mass', str(float(arm_geom.get('mass'))*random.uniform(0.8,1.2)))  #arm mass change
-        arm_geom.set('size', str(float(arm_geom.get('size'))*random.uniform(0.8,1.2)))  #arm size change
+        arm_geom.set('mass', str(float(arm_geom.get('mass'))*random.uniform(0.85,1.15)))  #arm mass change
+        arm_geom.set('size', str(float(arm_geom.get('size'))*random.uniform(0.85,1.15)))  #arm size change
         
         arm_geom = root.find(".//body[@name='arm2']/body/geom")
-        arm_geom.set('mass', str(float(arm_geom.get('mass'))*random.uniform(0.8,1.2)))  #arm mass change
-        arm_geom.set('size', str(float(arm_geom.get('size'))*random.uniform(0.8,1.2)))  #arm size change
+        arm_geom.set('mass', str(float(arm_geom.get('mass'))*random.uniform(0.85,1.15)))  #arm mass change
+        arm_geom.set('size', str(float(arm_geom.get('size'))*random.uniform(0.85,1.15)))  #arm size change
            
     tree.write(f"Gen{i}Body{j}.xml")   #write to new xml files
     tree.write("new.xml") 
@@ -104,7 +102,7 @@ def mutate(best_xml_file,i,j, iterations_body):
     i=0
 
     with mujoco.viewer.launch_passive(model, data) as viewer:
-        viewer.cam.azimuth = 45
+        viewer.cam.azimuth = 45                                       #View parameters
         viewer.cam.elevation = -20
         viewer.cam.distance = 10
 
@@ -118,8 +116,8 @@ def mutate(best_xml_file,i,j, iterations_body):
             i=0
 
             dm_control.mujoco.mj_step(model, data)
-            viewer.sync()                              ### Comment these two lines out to speed up code heavily
-            time.sleep(1/1000)
+            #viewer.sync()                              ### Comment these two lines out to speed up code heavily
+            #time.sleep(1/1000)
                 
             
     final_pos = data.qpos[:3]
@@ -139,18 +137,24 @@ def plot(gen_list, best_gen_fitness):   #plot best fitness of each generation, w
     plt.ylabel('Highest Fitness')
     plt.title('Best Evolved fitness Values')
     plt.show()
-    plt.savefig(fitness.png)
+    plt.savefig("fitness.png")
+
+
+# In[5]:
+
+
+#evolution("geodude.xml", 10, 20, 5000)
 
 
 # In[6]:
 
 
-#evolution("geodude.xml", 10, 100, 5000)
+if __name__ == "__main__":
+    evolution("geodude.xml", 10, 100, 5000)
 
 
 # In[ ]:
 
 
-if __name__ == "__main__":
-    evolution("geodude.xml", 10, 100, 5000)
+
 
